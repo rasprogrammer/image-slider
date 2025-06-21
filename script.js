@@ -42,7 +42,14 @@ if (imageSlider) {
         showSliderImage(index);
     }
 
+    function autoChangeImage() {
+        setInterval(() => {
+            nextImage();
+        }, 3000);
+    }
+
     prevBtn.addEventListener('click', prevImage);
     nextBtn.addEventListener('click', nextImage);
     showSliderImage(0);
+    autoChangeImage();
 }
