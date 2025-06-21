@@ -1,5 +1,6 @@
 // image-slider 
 const imageSlider = document.querySelector('#image-slider');
+let imageInterval = null;
 
 if (imageSlider) {
     const sliderArea = imageSlider.querySelector('.slide-area');
@@ -24,7 +25,14 @@ if (imageSlider) {
         }
     }
 
-    function prevImage() {
+    function prevImage(e) {
+        // when user click for show previous image
+        if (e) {
+            clearInterval(imageInterval);
+            imageInterval = null;
+            autoChangeImage();
+        }
+        
         if (index == 0) {
             index = lastIndex;
         } else {
@@ -33,7 +41,14 @@ if (imageSlider) {
         showSliderImage(index);
     }
     
-    function nextImage() {
+    function nextImage(e) {
+        // when user click for show previous image
+        if (e) {
+            clearInterval(imageInterval);
+            imageInterval = null;
+            autoChangeImage();
+        }
+        
         if (index == lastIndex) {
             index = 0;
         } else {
@@ -43,7 +58,7 @@ if (imageSlider) {
     }
 
     function autoChangeImage() {
-        setInterval(() => {
+        imageInterval = setInterval(() => {
             nextImage();
         }, 3000);
     }
